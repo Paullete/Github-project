@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search/search.component';
+import { UserComponent } from './user/user/user.component';
+import { DateCountPipe } from './date-count.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
+    UserComponent,
+    DateCountPipe
   ],
   imports: [
     BrowserModule,
