@@ -1,1 +1,9 @@
-<p>search works!</p>
+<div class="container w-50 mt-5">
+    <form >
+        <div class="input-group">
+            <input type="search" [(ngModel)]="userQuery" name="userQuery" class="form-control rounded " placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <button type="button" class="btn btn-primary" (click)="searchUser()">search</button>
+        </div>
+    </form>
+</div>
