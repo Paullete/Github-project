@@ -1,0 +1,9 @@
+img{
+    height: 150px;
+    width: 250px;
+}
+ a { text-decoration: none; color: rgb(90,165,251);} 
+
+a:hover{
+    color: blue;
+  }
