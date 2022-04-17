@@ -28,14 +28,16 @@ export class SearchService {
         public_repos:number;
     }
 
-    let userUrl = 'https://api.github.com/users/'+username+'?client_id='+environment.clientId + "&client_secret="+environment.clientSecret;
+    // let userUrl = 'https://api.github.com/users/Paullete'+username+'?client_id='+environment.ApiUrl+ "&client_secret="+environment.clientSecret;
 
-    let promise = new Promise<void>((resolve,reject) =>{
-      this.http.get<ApiResponse>(userUrl).toPromise().then
-      (response => {
-        this.user = response;
+    let promise = new Promise((resolve,reject) =>{
+      this.http.get<ApiResponse>('https://api.github.com/users/Paullete').toPromise().then
+      ((response:any) => {
+        this.user = response.user;
 
-        resolve()
+
+
+        resolve(response)
       },
       error=>{
         this.user.name = "We couldn’t find any users matching the name given"
@@ -55,13 +57,13 @@ export class SearchService {
         created_at:Date
         
       }
-      let repoUrl = 'https://api.github.com/users/'+username+'/repos?order=created&sort=asc?client_id='+environment.clientId + '&client_secret='+environment.clientSecret;
-      let promise = new Promise<void>((resolve,reject) =>{
-        this.http.get<ApiResponse>(repoUrl).toPromise().then
-        (response => {
-            this.repos = response;
-            console.log(this.repos);
-          resolve()
+      // let repoUrl = 'https://api.github.com/users/Paullete'+username+'/repos?order=created&sort=asc?client_id='+environment.ApiUrl+ '&client_secret='+environment.clientSecret;
+      let promise = new Promise((resolve,reject) =>{
+        this.http.get<ApiResponse>('https://api.github.com/users/Paullete').toPromise().then
+        ((response:any) => {
+            this.repos = response.repos;
+            
+          resolve(response)
         },
         error=>{
           this.repos.name = "We couldn’t find any repositories matching the name given"
