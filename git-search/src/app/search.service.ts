@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment'
 import { User } from './user';
 import { Repo } from './repo';
 
@@ -28,12 +28,13 @@ export class SearchService {
         public_repos:number;
     }
 
-    // let userUrl = 'https://api.github.com/users/Paullete'+username+'?client_id='+environment.ApiUrl+ "&client_secret="+environment.clientSecret;
+    let userUrl = 'https://api.github.com/users/'+username+'?ApiUrl='+environment.ApiUrl+ "&client_secret="+environment.clientSecret;
 
     let promise = new Promise((resolve,reject) =>{
-      this.http.get<ApiResponse>('https://api.github.com/users/Paullete').toPromise().then
+      this.http.get<ApiResponse>('https://api.github.com/users/').toPromise().then
       ((response:any) => {
         this.user = response.user;
+        
 
 
 
@@ -57,9 +58,9 @@ export class SearchService {
         created_at:Date
         
       }
-      // let repoUrl = 'https://api.github.com/users/Paullete'+username+'/repos?order=created&sort=asc?client_id='+environment.ApiUrl+ '&client_secret='+environment.clientSecret;
+      let repoUrl = 'https://api.github.com/users/'+username+'/repos?order=created&sort=asc?ApiUrl='+environment.ApiUrl+ '&client_secret='+environment.clientSecret;
       let promise = new Promise((resolve,reject) =>{
-        this.http.get<ApiResponse>('https://api.github.com/users/Paullete').toPromise().then
+        this.http.get<ApiResponse>('https://api.github.com/users/').toPromise().then
         ((response:any) => {
             this.repos = response.repos;
             
